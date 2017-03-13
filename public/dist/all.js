@@ -4,11 +4,13 @@ angular.module('myApp', []);
 'use strict';
 
 angular.module('myApp').controller('mainCtrl', function ($scope, mainService) {
+  // get the location data from the service
   $scope.locationData = mainService.data;
   var data = $scope.locationData;
 
+  // create GMaps instance
   $scope.initMap = function () {
-    // locations
+    // City of paris
     var paris = { lat: 48.8670558, lng: 2.3182354 };
     var mapOptions = {
       zoom: 14,
@@ -16,10 +18,13 @@ angular.module('myApp').controller('mainCtrl', function ($scope, mainService) {
       mapTypeId: 'satellite'
     };
 
+    // create the map here
     $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
+    // placeholder for markers we want on page
     $scope.markers = [];
 
+    // Marker constructor
     var createMarker = function createMarker(info) {
       var marker = new google.maps.Marker({
         map: $scope.map,
@@ -28,8 +33,8 @@ angular.module('myApp').controller('mainCtrl', function ($scope, mainService) {
       });
       google.maps.event.addListener(marker, 'click', function (e) {
         $('.marker-info').animate({ left: '10px' }, 1000);
-        $('.img-placeholder').append('<img class="loc-image" src="' + info.image + '">');
-        $('.name-placeholder').append('<p class="loc-name">' + info.name + '</p>');
+        $('.img-placeholder').append('<img class="loc-image" style="padding: 0 5px; width:90%; "src="' + info.image + '">');
+        $('.name-placeholder').append('<h1 class="loc-name" style="letter-spacing: 4px;">' + info.name + '</h1>');
         $('.desc-placeholder').append('<p class="loc-desc">' + info.desc + '</p>');
       });
 
@@ -43,6 +48,7 @@ angular.module('myApp').controller('mainCtrl', function ($scope, mainService) {
       $scope.markers.push(marker);
     };
 
+    // create marker for each location in the service
     data.forEach(function (val) {
       createMarker(val);
     });
@@ -63,21 +69,21 @@ angular.module('myApp').controller('mainCtrl', function ($scope, mainService) {
 angular.module('myApp').service('mainService', function ($http, $q) {
   this.data = [{
     id: 1,
-    name: 'Eiffel Tower',
+    name: 'EIFFEL TOWER [I GUESS]',
     loc: { lat: 48.8583736, lng: 2.2922926 },
     image: '../styles/images/img-for-blade-1.png',
     desc: 'EIFFEL TOWER!, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
   }, {
     id: 2,
     loc: { lat: 48.8737952, lng: 2.2928388 },
-    name: 'Arc de Triomphe',
+    name: 'EXTREMELY BUSY CIRCLE',
     image: '../styles/images/img-for-blade-0.png',
     desc: 'ARC, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
   }, {
     id: 3,
     loc: { lat: 48.8576873, lng: 2.3402372 },
-    name: "Sacré-Cœur",
-    image: '../styles/images/img-for-blade-0.png',
+    name: "MAJESTIC WATER CARRIAGE",
+    image: '../styles/images/img-for-blade-2.png',
     desc: 'SACRE COUR, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
   }];
 });

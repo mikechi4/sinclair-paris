@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
   <head>
-    <link rel="stylesheet" href="/styles/styles.css">
-    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="public/dist/styles.css">
   </head>
   <body ng-controller="mainCtrl">
     <div class="main-content">
@@ -11,18 +11,24 @@
     <div id="map"></div>
     <div class="marker-info">
       <div class="close-section">
-        x
+        <i class="fa fa-times" aria-hidden="true"></i>
       </div>
-      <div class="main-content">
+      <div class="location-content">
         <div class="img-placeholder">
 
         </div>
-        <div class="name-placeholder">
-           yo {{location.name}}
-        </div>
-        <div class="desc-placeholder">
+        <div class="location-text">
+          <div class="arrow-background">
+        
+          </div>
+          <div class="name-placeholder">
 
+          </div>
+          <div class="desc-placeholder">
+
+          </div>
         </div>
+
       </div>
     </div>
 
