@@ -2,7 +2,6 @@ angular.module('myApp').controller('mainCtrl', function($scope, mainService) {
     $scope.locationData = mainService.data;
     const data = $scope.locationData;
 
-
     $scope.initMap = function(){
       // locations
       const paris = {lat: 48.8670558, lng: 2.3182354};
@@ -24,7 +23,9 @@ angular.module('myApp').controller('mainCtrl', function($scope, mainService) {
         })
         google.maps.event.addListener(marker, 'click', (e) => {
           $('.marker-info').animate({left: '10px'}, 1000);
-          $('.location-img').append('<p>' + info.desc + '<p>');
+          $('.img-placeholder').append('<img class="loc-image" src="' + info.image + '">');
+          $('.name-placeholder').append('<p class="loc-name">' + info.name + '</p>');
+          $('.desc-placeholder').append('<p class="loc-desc">' + info.desc + '</p>');
         });
 
         google.maps.event.addListener(marker, 'mouseover', () => {
@@ -44,7 +45,9 @@ angular.module('myApp').controller('mainCtrl', function($scope, mainService) {
       $(document).ready(() => {
         $('.close-section').on('click', () => {
           $('.marker-info').animate({left: '-460px'}, 1000);
-          $('p').remove();
+          $('.loc-name').remove();
+          $('.loc-image').remove();
+          $('.loc-desc').remove();
         })
       })
     }

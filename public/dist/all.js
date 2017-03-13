@@ -28,7 +28,9 @@ angular.module('myApp').controller('mainCtrl', function ($scope, mainService) {
       });
       google.maps.event.addListener(marker, 'click', function (e) {
         $('.marker-info').animate({ left: '10px' }, 1000);
-        $('.location-img').append('<p>' + info.desc + '<p>');
+        $('.img-placeholder').append('<img class="loc-image" src="' + info.image + '">');
+        $('.name-placeholder').append('<p class="loc-name">' + info.name + '</p>');
+        $('.desc-placeholder').append('<p class="loc-desc">' + info.desc + '</p>');
       });
 
       google.maps.event.addListener(marker, 'mouseover', function () {
@@ -48,7 +50,9 @@ angular.module('myApp').controller('mainCtrl', function ($scope, mainService) {
     $(document).ready(function () {
       $('.close-section').on('click', function () {
         $('.marker-info').animate({ left: '-460px' }, 1000);
-        $('p').remove();
+        $('.loc-name').remove();
+        $('.loc-image').remove();
+        $('.loc-desc').remove();
       });
     });
   };
