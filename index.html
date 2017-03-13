@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="styles/normalize.css">
+  </head>
+  <body ng-controller="mainCtrl">
+    <div class="main-content">
+    </div>
+    <div class="header-splash"><img src="styles/images/logo-the-stay.png" width="40%"></div>
+    <div id="map"></div>
+    <div class="marker-info">
+      <div class="close-section">
+        x
+      </div>
+      <div class="main-content">
+        <div class="location-img">
+          <img ng-src="location.img" alt="">
+        </div>
+        <div class="location-name">
+           yo {{location.name}}
+        </div>
+        <div class="location-desc">
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+  <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMlX3CpTVfyXm2BTxWjc41bKSbSuvcKkA"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+  <script src="public/dist/all.js"></script>
+
+</html>
