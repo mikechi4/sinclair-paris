@@ -56,9 +56,9 @@ angular.module('myApp').controller('mainCtrl', function ($scope, mainService) {
     $(document).ready(function () {
       $('.close-section').on('click', function () {
         $('.marker-info').animate({ left: '-460px' }, 1000);
-        $('.loc-name').remove();
-        $('.loc-image').remove();
-        $('.loc-desc').remove();
+        setTimeout("$('.loc-name').remove()", 1000);
+        setTimeout("$('.loc-image').remove()", 1000);
+        setTimeout("$('.loc-desc').remove()", 1000);
       });
     });
   };
